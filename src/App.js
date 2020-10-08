@@ -1,26 +1,55 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import todoData from './todoData';
+import Todos from './Todos';
+import Header from './Header';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      todos: todoData
+    }
+    // this.toggleComplete = this.toggleComplete.bind(this);
+    // this.deleteItem = this.deleteItem.bind(this);
+  }
+
+  toggleComplete = (id) => {
+    const updatedItems = this.state.todos.map(item => {
+      if (item.id === id) {
+        return {
+          ...item,
+          completed: !item.completed
+        }
+      } else {
+        return item
+      }
+    })
+    this.setState({
+      todos: updatedItems
+    })
+  }
+
+  deleteItem = (id) => {
+    this.setState({ todos: this.state.todos.filter(item => item.id !== id) })
+  }
+
+  addItem(e) {
+    e.preventDefault();
+
+    console.log('addItem');
+  }
+
+  render() {
+    return (
+      <main className="container">
+        <Header toggleComplete={this.toggleComplete} addItem={this.addItem} />
+        <div className="todo-list">
+          <Todos todos={this.state.todos} toggleComplete={this.toggleComplete} deleteItem={this.deleteItem} />
+        </div>
+      </main>
+    );
+  }
 }
 
 export default App;
