@@ -10,8 +10,9 @@ class App extends React.Component {
     this.state = {
       todos: todoData
     }
-    // this.toggleComplete = this.toggleComplete.bind(this);
-    // this.deleteItem = this.deleteItem.bind(this);
+    this.toggleComplete = this.toggleComplete.bind(this)
+    this.deleteItem = this.deleteItem.bind(this)
+    this.addTodo = this.addTodo.bind(this)
   }
 
   toggleComplete = (id) => {
@@ -34,18 +35,32 @@ class App extends React.Component {
     this.setState({ todos: this.state.todos.filter(item => item.id !== id) })
   }
 
-  addItem(e) {
-    e.preventDefault();
-
-    console.log('addItem');
+  addTodo = (text) => {
+    const newItem =
+    {
+      id: Math.random(),
+      text: text,
+      completed: false
+    }
+    const updatedTodos = this.state.todos.concat(newItem);
+    this.setState({ todos: updatedTodos })
   }
+
+
 
   render() {
     return (
       <main className="container">
-        <Header toggleComplete={this.toggleComplete} addItem={this.addItem} />
+        <Header
+          toggleComplete={this.toggleComplete}
+          addTodo={this.addTodo}
+        />
         <div className="todo-list">
-          <Todos todos={this.state.todos} toggleComplete={this.toggleComplete} deleteItem={this.deleteItem} />
+          <Todos
+            todos={this.state.todos}
+            toggleComplete={this.toggleComplete}
+            deleteItem={this.deleteItem}
+          />
         </div>
       </main>
     );

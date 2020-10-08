@@ -1,7 +1,8 @@
+// import { render } from '@testing-library/react';
 import React from 'react'
 
-
 function TodoItem(props) {
+
   const styleCompleted = {
     fontStyle: 'italic',
     color: '#cdcdcd',
@@ -26,6 +27,9 @@ function TodoItem(props) {
       <button className="delete-button" style={btnStyle} onClick={() => props.deleteItem(id)}>X</button>
     </div>
   )
+
 }
+
+
 
 export default TodoItem
