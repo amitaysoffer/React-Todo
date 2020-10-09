@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css'
 import todoData from './todoData';
 import Todos from './Todos';
+import AddTodoItem from './AddTodoItem';
 import Header from './Header';
 
 class App extends React.Component {
@@ -46,22 +47,21 @@ class App extends React.Component {
     this.setState({ todos: updatedTodos })
   }
 
-
-
   render() {
     return (
       <main className="container">
-        <Header
+        <Header />
+        <AddTodoItem
           toggleComplete={this.toggleComplete}
           addTodo={this.addTodo}
         />
-        <div className="todo-list">
+        <ul className="todo-list list-group row">
           <Todos
             todos={this.state.todos}
             toggleComplete={this.toggleComplete}
             deleteItem={this.deleteItem}
           />
-        </div>
+        </ul>
       </main>
     );
   }
