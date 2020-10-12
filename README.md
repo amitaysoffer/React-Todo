@@ -2,8 +2,6 @@
 
 > Todo app build using React-JS 
 
-Check out the app [HERE](https://amitaysoffer.github.io/React-Todo/)
-
 ![Screenshot 2020-10-12 at 16 05 14](https://user-images.githubusercontent.com/31068256/95761794-bb364d00-0ca4-11eb-9161-5414257e4e95.png)
 
 This was my firs app built using ReactJS. Throughout this app I realized the importance of React and its many advantages.
