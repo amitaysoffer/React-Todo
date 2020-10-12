@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css'
 import todoData from './todoData';
 import Todos from './Todos';
 import AddTodoItem from './AddTodoItem';
@@ -45,6 +44,7 @@ class App extends React.Component {
     }
     const updatedTodos = this.state.todos.concat(newItem);
     this.setState({ todos: updatedTodos })
+    
   }
 
   render() {
